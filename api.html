@@ -1,32 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Story CRUD Operations</title>
-    <!-- Include Bootstrap CSS -->
-    
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <title>Comments CRUD App</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<body>
+    
+    <div class="container">
+        <h2 class="text-center">Comments API Client</h2>
 
-<body >
+        <button id="showAddCommentForm" class="btn btn-primary mb-3">Add Comment</button>
 
-    <div ><h2>User's Data</h2>
+        <div id="addCommentForm" class="card p-3 mb-3" style="display: none;">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="body">Comment</label>
+                <textarea class="form-control" id="body" rows="3" placeholder="Enter your comment"></textarea>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button id="addCommentBtn" class="btn btn-success mr-2">Add</button>
+                <button id="closeAddFormBtn" class="btn btn-primary">Close</button>
+            </div>
+        </div>
 
-        <button id="button1" >Show All Users</button>
-        <button id="button2">Show Specific User</button>
-        <button id="button3">Add User</button>
-        <button id="button4">Update User</button>
-        <button id="button5">Update User using Patch</button>
-        <button id="button6">Delete</button>
+        <div id="commentsSection" class="mt-5">
+            <h3>All Comments</h3>
+            <div id="commentsList"></div>
+        </div>
+    </div>
 
-        <div id="user"></div>
+    <div class="modal fade" id="editCommentModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Update Comment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="editName">Name</label>
+                        <input type="text" class="form-control" id="editName">
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email</label>
+                        <input type="email" class="form-control" id="editEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="editBody">Comment</label>
+                        <textarea class="form-control" id="editBody" rows="3"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button id="updateCommentBtn" class="btn btn-success mr-2">Update</button>
+                        <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="api.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="api.js"></script>
 </body>
+
 </html>
